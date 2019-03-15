@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <p class="alert alert-info">anonymous</p>
+                        <a class="btn btn-success" href="{{ path('index_book') }}">Books</a>
+                        <a class="btn btn-primary" href="{{ path('app_login') }}">Login</a>
+                    {% else %}
+                        <p class="alert alert-info">Email: {{ app.user.email }}</p>
+                        <a class="btn btn-danger" href="{{ path('app_logout') }}">Logout</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mercure client{% endblock %}
+
+{% block body %}
+
+        <h1>Mercure client</h1>
+        <div class="col-12">
+            <p>Server response: <span id="output"></span></p>
+        </div>
+        
+        <div class="col-4">
+            <label for="user-id">User id</label>
+            <input type="number" id="user-id" class="form-control" name="user-id" value="{{ app.user.id }}">
+            <label for="book-id">Book id</label>
+            <input type="number" id="book-id" class="form-control" name="book-id">
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary" id="getBook">Display status</button>
+        </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}
+
+
