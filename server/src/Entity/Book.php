@@ -8,25 +8,25 @@ use Doctrine\ORM\Mapping as ORM;
 class Book
 {
 
-    public function __construct(int $id, string $name, string $status) {
-        $this->id = $id;
+    public function __construct(string $name, string $status) {
         $this->name = $name;
         $this->status = $status;
     }
 
     /**
      * @ORM\Id
-     * @ORM\Column
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     public $id;
 
     /**
-     * @ORM\Column
+     * @ORM\Column(type="string", length=180)
      */
     public $name;
 
     /**
-     * @ORM\Column
+     * @ORM\Column(type="string", length=50)
      */
     public $status;
 }
